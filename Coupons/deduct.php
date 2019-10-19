@@ -3,9 +3,9 @@
 $host = "localhost";
 $user = "root";
 $password ="";
-$database = "seamlesscoupons";
+$database = "seamless";
 
-$rfid = $_GET['rfid'];
+$rfid = $_POST['rfid'];
 $coupons = "1";
 $coupons = (int)$coupons;
 
@@ -36,7 +36,7 @@ if(!empty($rfid))
                 $rfid1 = $row['rfid'];
                 $coupons1 = $row['coupons'];
                 
-                if ($coupons1 > 0 ){
+                if ($coupons1 >= 0 ){
                     
                     $coupons1 = $coupons1-1;
                     
@@ -66,8 +66,8 @@ if(!empty($rfid))
             }
         
         else{
-            //insert
-            echo "No RFID Exist";
+             
+            echo "No RFID";
             }
         }
     }

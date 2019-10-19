@@ -5,12 +5,12 @@
 #include <SPI.h>
 #include <MFRC522.h>
  
-#define SS_PIN 2
-#define RST_PIN 20
+#define SS_PIN 4
+#define RST_PIN 5
 MFRC522 mfrc522(SS_PIN, RST_PIN);  
 
-const char *ssid = "Sandeep's Vivo";  //ENTER YOUR WIFI SETTINGS
-const char *password = "qwerty123";
+const char *ssid = "Sandeep";  //ENTER YOUR WIFI SETTINGS
+const char *password = "qwerty133";
  
 const char *host = "192.168.43.194";
 

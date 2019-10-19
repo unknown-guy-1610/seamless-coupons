@@ -3,9 +3,9 @@
 $host = "localhost";
 $user = "root";
 $password ="";
-$database = "seamlesscoupons";
+$database = "seamless";
 
-$rfid = $_GET['rfid'];
+$rfid = $_POST['rfid'];
 $coupons = "1";
 $coupons = (int)$coupons;
 
@@ -36,7 +36,7 @@ if(!empty($rfid))
                 $rfid1 = $row['rfid'];
                 $coupons1 = $row['coupons'];
                 
-                if ($coupons1 > 0 ){
+                if ($coupons1 >= 0 ){
                     
                     $coupons1 = $coupons1+1;
                     
@@ -66,8 +66,23 @@ if(!empty($rfid))
             }
         
         else{
-            //insert
-            echo "No RFID Exist";
+             $update_Query = "INSERT INTO `codechef`(`rfid`, `coupons`) VALUES ('$rfid','$coupons')";
+                    try{
+                        $update_Result = mysqli_query($connect, $update_Query);
+        
+                    if($update_Result){
+                        if(mysqli_affected_rows($connect) > 0){     
+                            echo 'Data Updated';
+                            }
+                        else{
+                            echo 'Data Not Updated';
+                            }
+                        }
+                    }
+                    catch (Exception $ex) {
+                        echo 'Error Update '.$ex->getMessage();
+                        }
+            echo "RFID added";
             }
         }
     }
